@@ -1,6 +1,10 @@
-CharacterBody2D
-Camera2D
+VisibleOnScreenNotifier2D
+CollisionShape2D
+Area2D
 Sprite2D
 RigidBody2D
+Node2D
+Node
+CharacterBody2D
+Camera2D
 CollisionPolygon2D
-CollisionShape2D

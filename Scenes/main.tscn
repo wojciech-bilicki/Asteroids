@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfksac6m3avtj"]
 
-[ext_resource type="PackedScene" uid="uid://bo3hvbp5i8iaf" path="res://Scenes/player.tscn" id="1_04ff3"]
+[ext_resource type="PackedScene" uid="uid://dmpkmummnny4l" path="res://Scenes/player/player.tscn" id="1_1l3r8"]
 
 [node name="main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_04ff3")]
-position = Vector2(1152, 648)
-rotation = 3.14159
+[node name="Player" parent="." instance=ExtResource("1_1l3r8")]
+position = Vector2(1194, 580)

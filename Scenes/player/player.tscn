@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmpkmummnny4l"]
+
+[ext_resource type="Script" path="res://Scenes/player/player_movement.gd" id="1_8tgk0"]
+[ext_resource type="Texture2D" uid="uid://teovnlysqnp4" path="res://Assets/Player.png" id="2_q8sdq"]
+[ext_resource type="Script" path="res://Scenes/player/player_shooting.gd" id="3_bfkh2"]
+[ext_resource type="PackedScene" uid="uid://dc5fn48r1ocpu" path="res://Scenes/bullet.tscn" id="4_jcp15"]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8tgk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_q8sdq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 3.14159
+polygon = PackedVector2Array(0, -32, 32, 32, 0, 16, -32, 32)
+
+[node name="ShootingPoint" type="Node2D" parent="."]
+position = Vector2(0, 30)
+script = ExtResource("3_bfkh2")
+bullet_scene = ExtResource("4_jcp15")

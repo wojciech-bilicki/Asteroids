@@ -1,3 +1,5 @@
-res://Scenes/player.tscn
 res://Scenes/main.tscn
-res://Scenes/player_movement.gd
+res://Scenes/player/player.tscn
+res://Scenes/bullet.tscn
+res://Scenes/player/player_shooting.gd
+res://Scenes/bullet.gd
