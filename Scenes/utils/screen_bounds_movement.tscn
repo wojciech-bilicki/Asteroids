@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://or5fpjimvg2h"]
+
+[ext_resource type="Script" path="res://Scenes/player/ScreenBoundsMovement.gd" id="1_1pdvf"]
+
+[node name="ScreenBoundsMovement" type="Node"]
+script = ExtResource("1_1pdvf")

@@ -8,6 +8,5 @@ func _process(delta):
 		get_tree().root.add_child(bullet)
 		
 		var shot_direction = Vector2(0,1).rotated(get_parent().rotation)
-		print(shot_direction)
 		bullet.position = Vector2(global_position)
 		bullet.direction = shot_direction

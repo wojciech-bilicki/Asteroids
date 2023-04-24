@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1682266935
+::res://::1682357098
 icon.svg::CompressedTexture2D::2314893544828461765::1682252224::1682252227::1::::<><>::
 ::res://Assets/::1682253136
 Asteroid_01.png::CompressedTexture2D::3496902393672333923::1682252306::1682253136::1::::<><>::
@@ -9,10 +9,11 @@ Asteroid_04.png::CompressedTexture2D::2791358357118808524::1682252306::168225313
 Lives.png::CompressedTexture2D::1043897446505008207::1682252306::1682253136::1::::<><>::
 Player.png::CompressedTexture2D::1342733780621136815::1682252306::1682253136::1::::<><>::
 Square.png::CompressedTexture2D::5334473744012539797::1682252306::1682253136::1::::<><>::
-::res://Scenes/::1682266895
-bullet.tscn::PackedScene::7361899446225157130::1682266895::0::1::::<><>::uid://ciacadxjui4fx
-main.tscn::PackedScene::5145522422505062755::1682266820::0::1::::<><>::uid://bo3hvbp5i8iaf
-::res://Scenes/player/::1682266912
-player.tscn::PackedScene::8033123510068904829::1682266912::0::1::::<><>::res://Scenes/player/player_movement.gd<>uid://teovnlysqnp4<>res://Scenes/player/player_shooting.gd
+::res://Scenes/::1682270671
+bullet.gd::GDScript::-1::1682270669::0::1::::Bullet<>Sprite2D<>::
+bullet.tscn::PackedScene::7361899446225157130::1682270671::0::1::::<><>::uid://ciacadxjui4fx<>res://Scenes/bullet.gd
+main.tscn::PackedScene::5145522422505062755::1682270671::0::1::::<><>::uid://dmpkmummnny4l
+::res://Scenes/player/::1682270671
+player.tscn::PackedScene::8033123510068904829::1682270671::0::1::::<><>::res://Scenes/player/player_movement.gd<>uid://teovnlysqnp4<>res://Scenes/player/player_shooting.gd<>uid://dc5fn48r1ocpu
 player_movement.gd::GDScript::-1::1682259667::0::1::::<>CharacterBody2D<>::
-player_shooting.gd::GDScript::-1::1682266893::0::1::::<>Node2D<>::
+player_shooting.gd::GDScript::-1::1682270252::0::1::::<>Node2D<>::

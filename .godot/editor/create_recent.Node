@@ -1,10 +1,10 @@
-VisibleOnScreenNotifier2D
-CollisionShape2D
 Area2D
-Sprite2D
+CollisionShape2D
 RigidBody2D
-Node2D
+Sprite2D
 Node
+VisibleOnScreenNotifier2D
+Node2D
 CharacterBody2D
 Camera2D
 CollisionPolygon2D

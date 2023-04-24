@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody2D
 
 @export var  max_speed: float = 10
@@ -32,8 +34,10 @@ func _physics_process(delta):
 	elif input_vector.y == 0 && velocity != Vector2.ZERO:
 		slow_down_and_stop(delta)
 	
-	check_screen_bounds()
-	move_and_slide()
+	var collision_object = move_and_collide(velocity * delta)
+	if collision_object != null:
+		queue_free()
+		collision_object.get_collider().queue_free()
 	
 func accelerate_forward(delta: float):
 	velocity += (input_vector * linear_acceleration * delta).rotated(rotation)
@@ -47,15 +51,4 @@ func slow_down_and_stop(delta: float):
 		if velocity.y >= -0.1 && velocity.y <= 0.1:
 			velocity.y = 0
 
-func check_screen_bounds():
-	var screen_size = get_viewport_rect().size
-	
-	if global_position.y < 0:
-		global_position.y = screen_size.y
-	elif global_position.y > screen_size.y:
-		global_position.y = 0
-		
-	if global_position.x < 0:
-		global_position.x = screen_size.x
-	elif global_position.x > screen_size.x:
-		global_position.x = 0
+
