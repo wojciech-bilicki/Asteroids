@@ -12,7 +12,3 @@ func _process(delta):
 	
 func destroy():
 	queue_free()
-
-func _on_area_2d_area_entered(area):
-	print(area)
-	pass # Replace with function body.

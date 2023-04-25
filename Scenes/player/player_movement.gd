@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var  max_speed: float = 10
 @export var rotation_speed: float = 3.5
 @export var velocity_damping_factor = .5
-
 @export var linear_acceleration = 200
 
+@onready var explosion_particles = $ExplosionParticles
 
 var input_vector: Vector2
 var rotation_direction: int
@@ -35,9 +35,15 @@ func _physics_process(delta):
 		slow_down_and_stop(delta)
 	
 	var collision_object = move_and_collide(velocity * delta)
+	
 	if collision_object != null:
+		var collider = collision_object.get_collider()
+		if collider is Asteroid:
+			print("A")
+			collider.emit_explosion()
 		queue_free()
-		collision_object.get_collider().queue_free()
+		collider.queue_free()
+		
 	
 func accelerate_forward(delta: float):
 	velocity += (input_vector * linear_acceleration * delta).rotated(rotation)

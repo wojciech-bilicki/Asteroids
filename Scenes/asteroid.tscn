@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbdyig5ieulsy"]
+[gd_scene load_steps=6 format=3 uid="uid://bbdyig5ieulsy"]
 
 [ext_resource type="Script" path="res://Scenes/asteroid.gd" id="1_fxdvt"]
 [ext_resource type="Texture2D" uid="uid://bp26qbcvc3p5l" path="res://Assets/Asteroid_01.png" id="2_aji8o"]
 [ext_resource type="PackedScene" uid="uid://or5fpjimvg2h" path="res://Scenes/utils/screen_bounds_movement.tscn" id="3_4qbcp"]
+[ext_resource type="PackedScene" uid="uid://cejkgj3dg6tvx" path="res://explosion.tscn" id="4_k8a3b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3m0pi"]
 radius = 64.0
@@ -28,6 +29,9 @@ collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_3m0pi")
+
+[node name="ExplosionParticles" parent="." instance=ExtResource("4_k8a3b")]
+position = Vector2(0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

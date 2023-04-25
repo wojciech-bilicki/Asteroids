@@ -1,10 +1,11 @@
-res://Scenes/asteroid.tscn
-res://Scenes/asteroid.gd
 res://Scenes/player/player.tscn
+res://Scenes/AsteroidsSpawner.gd
 res://Scenes/bullet.tscn
 res://Scenes/main.tscn
-res://Scenes/AsteroidsSpawner.gd
+res://Scenes/asteroid.tscn
+res://Scenes/asteroid.gd
+res://Scenes/AsteroidSize.gd
+res://explosion.tscn
 res://Scenes/player/player_movement.gd
-res://Scenes/player/ScreenBoundsMovement.gd
+res://explosion.gd
 res://Scenes/bullet.gd
-res://Scenes/player/player_shooting.gd

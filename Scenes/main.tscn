@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfksac6m3avtj"]
+[gd_scene load_steps=5 format=3 uid="uid://cfksac6m3avtj"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkmummnny4l" path="res://Scenes/player/player.tscn" id="1_1l3r8"]
 [ext_resource type="Script" path="res://Scenes/AsteroidsSpawner.gd" id="2_xcrhr"]
 [ext_resource type="PackedScene" uid="uid://bbdyig5ieulsy" path="res://Scenes/asteroid.tscn" id="3_jhylv"]
+[ext_resource type="Texture2D" uid="uid://bfqms1jkcyujd" path="res://Assets/SpaceShip.png" id="4_u7tkx"]
 
 [node name="main" type="Node2D"]
 
@@ -12,3 +13,7 @@ position = Vector2(1194, 580)
 [node name="AsteroidsSpawner" type="Node" parent="."]
 script = ExtResource("2_xcrhr")
 asteroid_scene = ExtResource("3_jhylv")
+
+[node name="SpaceShip" type="Sprite2D" parent="."]
+position = Vector2(427, 692)
+texture = ExtResource("4_u7tkx")
