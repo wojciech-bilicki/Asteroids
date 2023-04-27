@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxv5axyf7ude4"]
+
+[ext_resource type="Script" path="res://Scenes/start_scene.gd" id="1_8bye0"]
+[ext_resource type="PackedScene" uid="uid://b1jtwgwf8m45f" path="res://Scenes/asteroids_spawner.tscn" id="1_tykwt"]
+[ext_resource type="PackedScene" uid="uid://cb0pyfagw6lwm" path="res://Scenes/ufo_spawner.tscn" id="2_ab0lh"]
+[ext_resource type="FontFile" uid="uid://cfvyr5jhxrdch" path="res://Assets/font/joystix monospace.otf" id="3_imf3x"]
+
+[node name="StartScene" type="Node2D"]
+script = ExtResource("1_8bye0")
+
+[node name="AsteroidsSpawner" parent="." instance=ExtResource("1_tykwt")]
+
+[node name="UfoSpawner" parent="." instance=ExtResource("2_ab0lh")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartGameButton" type="Button" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_imf3x")
+theme_override_font_sizes/font_size = 120
+text = "START GAME"
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]

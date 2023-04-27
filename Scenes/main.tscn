@@ -1,19 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfksac6m3avtj"]
+[gd_scene load_steps=6 format=3 uid="uid://cfksac6m3avtj"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkmummnny4l" path="res://Scenes/player/player.tscn" id="1_1l3r8"]
-[ext_resource type="Script" path="res://Scenes/AsteroidsSpawner.gd" id="2_xcrhr"]
-[ext_resource type="PackedScene" uid="uid://bbdyig5ieulsy" path="res://Scenes/asteroid.tscn" id="3_jhylv"]
-[ext_resource type="Texture2D" uid="uid://bfqms1jkcyujd" path="res://Assets/SpaceShip.png" id="4_u7tkx"]
+[ext_resource type="PackedScene" uid="uid://b1jtwgwf8m45f" path="res://Scenes/asteroids_spawner.tscn" id="2_vjew4"]
+[ext_resource type="PackedScene" uid="uid://cb0pyfagw6lwm" path="res://Scenes/ufo_spawner.tscn" id="3_vsxj3"]
+[ext_resource type="Script" path="res://Scenes/LivesManager.gd" id="7_nupc8"]
+[ext_resource type="PackedScene" uid="uid://c2vwf0vehxr6k" path="res://Scenes/ui.tscn" id="8_bnbbp"]
 
 [node name="main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_1l3r8")]
 position = Vector2(1194, 580)
 
-[node name="AsteroidsSpawner" type="Node" parent="."]
-script = ExtResource("2_xcrhr")
-asteroid_scene = ExtResource("3_jhylv")
+[node name="AsteroidsSpawner" parent="." instance=ExtResource("2_vjew4")]
 
-[node name="SpaceShip" type="Sprite2D" parent="."]
-position = Vector2(427, 692)
-texture = ExtResource("4_u7tkx")
+[node name="UfoSpawner" parent="." instance=ExtResource("3_vsxj3")]
+
+[node name="LifesManager" type="Node" parent="."]
+script = ExtResource("7_nupc8")
+
+[node name="UI" parent="." instance=ExtResource("8_bnbbp")]

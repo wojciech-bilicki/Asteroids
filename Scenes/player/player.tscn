@@ -1,16 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmpkmummnny4l"]
+[gd_scene load_steps=10 format=3 uid="uid://dmpkmummnny4l"]
 
 [ext_resource type="Script" path="res://Scenes/player/player_movement.gd" id="1_8tgk0"]
+[ext_resource type="Texture2D" uid="uid://dkysw8hkcyfeg" path="res://Assets/EngineThrottle.png" id="2_moaqa"]
 [ext_resource type="Texture2D" uid="uid://teovnlysqnp4" path="res://Assets/Player.png" id="2_q8sdq"]
 [ext_resource type="Script" path="res://Scenes/player/player_shooting.gd" id="3_bfkh2"]
 [ext_resource type="PackedScene" uid="uid://dc5fn48r1ocpu" path="res://Scenes/bullet.tscn" id="4_jcp15"]
 [ext_resource type="PackedScene" uid="uid://or5fpjimvg2h" path="res://Scenes/utils/screen_bounds_movement.tscn" id="5_3san5"]
 [ext_resource type="PackedScene" uid="uid://cejkgj3dg6tvx" path="res://explosion.tscn" id="6_d61i8"]
 
+[sub_resource type="Animation" id="Animation_npw6h"]
+resource_name = "engine_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EngineSprite:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbx68"]
+_data = {
+"engine_animation": SubResource("Animation_npw6h")
+}
+
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.7, 0.7)
-collision_mask = 4
+collision_mask = 16
 script = ExtResource("1_8tgk0")
+
+[node name="EngineSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -25)
+rotation = 3.14159
+texture = ExtResource("2_moaqa")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = 3.14159
@@ -30,3 +58,26 @@ node = NodePath("..")
 
 [node name="ExplosionParticles" parent="." instance=ExtResource("6_d61i8")]
 position = Vector2(0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+rotation = 3.14159
+polygon = PackedVector2Array(0, -32, 32, 32, 0, 16, -32, 32)
+
+[node name="BlinkingTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pbx68")
+}
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="tree_exiting" from="Area2D" to="." method="_on_area_2d_tree_exiting"]

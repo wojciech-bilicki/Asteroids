@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb0pyfagw6lwm"]
+
+[ext_resource type="Script" path="res://Scenes/UfoSpawner.gd" id="1_w6ldj"]
+[ext_resource type="PackedScene" uid="uid://ns6bm4d4bbma" path="res://Scenes/ufo.tscn" id="2_j4cri"]
+[ext_resource type="Script" path="res://Scenes/ufoTimer.gd" id="3_lpi0n"]
+
+[sub_resource type="Curve2D" id="Curve2D_86jsr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3071, 53, 0, 0, 0, 0, 2048, 247, 0, 0, 0, 0, 1012, 63, 0, 0, 0, 0, 272, 211, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_3opk4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 115, -10, 0, 0, 0, 0, -586, 132, 0, 0, 0, 0, -999, -45, 0, 0, 0, 0, -1580, 139, 0, 0, 0, 0, -1621, -23, 0, 0, 0, 0, -2094, 91, 0, 0, 0, 0, -3036, -195)
+}
+point_count = 7
+
+[node name="UfoSpawner" type="Node"]
+script = ExtResource("1_w6ldj")
+ufo_scene = ExtResource("2_j4cri")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+script = ExtResource("3_lpi0n")
+min_time = 5
+max_time = 15
+
+[node name="PathTopLeftRight" type="Path2D" parent="."]
+curve = SubResource("Curve2D_86jsr")
+
+[node name="PathToFollow" type="PathFollow2D" parent="PathTopLeftRight"]
+position = Vector2(3071, 53)
+rotation = -0.00915306
+rotates = false
+
+[node name="69508" type="Timer" parent="PathTopLeftRight/PathToFollow"]
+wait_time = 0.2
+one_shot = true
+
+[node name="PathBottomRightLeft" type="Path2D" parent="."]
+position = Vector2(2317, 1102)
+curve = SubResource("Curve2D_3opk4")
+
+[node name="PathToFollow" type="PathFollow2D" parent="PathBottomRightLeft"]
+position = Vector2(115, -10)
+rotation = -0.00915306
+rotates = false
+
+[node name="69509" type="Timer" parent="PathBottomRightLeft/PathToFollow"]
+wait_time = 0.2
+one_shot = true

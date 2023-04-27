@@ -1,6 +1,6 @@
 class_name Asteroid
 
-extends RigidBody2D
+extends Area2D
 
 var image_array = ["res://Assets/Asteroid_01.png", "res://Assets/Asteroid_02.png", "res://Assets/Asteroid_03.png", "res://Assets/Asteroid_04.png"]
 
@@ -16,19 +16,17 @@ var size = Utils.AsteroidSize.BIG
 
 @onready var collision_shape = $CollisionShape2D
 @onready var area2D = $Area2D
-@onready var area2D_collistion_shape = $Area2D/CollisionShape2D2
 @onready var sprite = $Sprite2D as Sprite2D
 
 @onready var explosion_particles = $ExplosionParticles
+
+var direction: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# choose random image
 	var scaleValue = 1 / (size + 1.0) 
 	
-	collision_shape.scale = Vector2(scaleValue, scaleValue)
-	area2D.scale = Vector2(scaleValue, scaleValue)
-	area2D_collistion_shape.scale = Vector2(scaleValue, scaleValue)
-	sprite.scale = Vector2(scaleValue, scaleValue)
+	scale = Vector2(scaleValue, scaleValue)
 	
 	speed = speed + speed * size * speed_increment_factor
 	
@@ -39,22 +37,27 @@ func _ready():
 	# get random direction 
 	var x = randf_range(-1, 1)
 	var y = randf_range(-1, 1)
-	var direction = Vector2(x, y)
-	linear_velocity = direction.normalized() * speed
+	direction = Vector2(x, y)
 
-func _on_area_2d_area_entered(area):
-	
-	if area is Bullet:
-		emit_explosion()
-		queue_free()
-		area.queue_free()
-		var new_asteroid_size = size + 1
-		on_asteroid_destroyed.emit(new_asteroid_size, global_position)
+func _process(delta):
+	position += direction * speed * delta
 		
 func emit_explosion():
 	explosion_particles.emitting = true
 	explosion_particles.reparent(get_tree().root)
 
-
-
-
+func _on_area_entered(area):
+	if area.owner is Player and (area.owner as Player).is_invincible == false:
+		(area.owner as Player).on_player_died.emit()
+		emit_explosion()
+		queue_free()
+		area.owner.queue_free()
+		var new_asteroid_size = size + 1
+		on_asteroid_destroyed.emit(new_asteroid_size, global_position)
+		
+	if area is Bullet or area is Ufo:
+		emit_explosion()
+		queue_free()
+		area.queue_free()
+		var new_asteroid_size = size + 1
+		on_asteroid_destroyed.emit(new_asteroid_size, global_position)

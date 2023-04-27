@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1jtwgwf8m45f"]
+
+[ext_resource type="Script" path="res://Scenes/AsteroidsSpawner.gd" id="1_rcfm5"]
+[ext_resource type="PackedScene" uid="uid://bbdyig5ieulsy" path="res://Scenes/asteroid.tscn" id="2_baux4"]
+
+[node name="AsteroidsSpawner" type="Node"]
+script = ExtResource("1_rcfm5")
+amount = 5
+asteroid_scene = ExtResource("2_baux4")

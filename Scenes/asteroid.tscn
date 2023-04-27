@@ -8,10 +8,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3m0pi"]
 radius = 64.0
 
-[node name="Asteroid" type="RigidBody2D"]
+[node name="Asteroid" type="Area2D"]
 collision_layer = 4
-collision_mask = 3
-gravity_scale = 0.0
+collision_mask = 27
 script = ExtResource("1_fxdvt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,15 +22,7 @@ node = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3m0pi")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_3m0pi")
-
 [node name="ExplosionParticles" parent="." instance=ExtResource("4_k8a3b")]
 position = Vector2(0, 0)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
