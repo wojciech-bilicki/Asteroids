@@ -15,6 +15,8 @@ signal on_player_died
 @onready var sprite = $Sprite2D
 @onready var enginge_sprite = $EngineSprite
 @onready var animation_player = $AnimationPlayer
+@onready var engine_audio_player = $EngineAudioPlayer
+@onready var explosion_audio_player = $"../ExplosionAudioPlayer"
 
 var input_vector: Vector2
 var rotation_direction: int
@@ -38,8 +40,12 @@ func _process(delta):
 		
 	#play_animation 
 	if input_vector.y != 0:
+		if !engine_audio_player.playing:
+			engine_audio_player.play()
 		animation_player.play("engine_animation")
 	else: 
+		if engine_audio_player.playing:
+			engine_audio_player.stop()
 		animation_player.stop()
 		enginge_sprite.visible = false
 		
@@ -74,15 +80,12 @@ func _on_area_2d_area_entered(area):
 		return
 	
 	if area is Bullet:
+		explosion_audio_player.play()
 		on_player_died.emit()
 		queue_free()
 		area.queue_free()
 		explosion_particles.emitting = true
 		explosion_particles.reparent(get_tree().root)
-		
-
-
-	
 	
 func start_invincibility():
 	is_invincible = true

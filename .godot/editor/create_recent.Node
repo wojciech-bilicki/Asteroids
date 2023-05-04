@@ -1,11 +1,12 @@
+AudioStreamPlayer
+HBoxContainer
+Label
 Button
 MarginContainer
 CenterContainer
 CanvasLayer
-Label
 TextureRect
 Sprite2D
-HBoxContainer
 AnimationPlayer
 Timer
 Node

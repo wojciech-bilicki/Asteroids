@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmpkmummnny4l"]
+[gd_scene load_steps=12 format=3 uid="uid://dmpkmummnny4l"]
 
 [ext_resource type="Script" path="res://Scenes/player/player_movement.gd" id="1_8tgk0"]
 [ext_resource type="Texture2D" uid="uid://dkysw8hkcyfeg" path="res://Assets/EngineThrottle.png" id="2_moaqa"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dc5fn48r1ocpu" path="res://Scenes/bullet.tscn" id="4_jcp15"]
 [ext_resource type="PackedScene" uid="uid://or5fpjimvg2h" path="res://Scenes/utils/screen_bounds_movement.tscn" id="5_3san5"]
 [ext_resource type="PackedScene" uid="uid://cejkgj3dg6tvx" path="res://explosion.tscn" id="6_d61i8"]
+[ext_resource type="AudioStream" uid="uid://w5vqx356mm72" path="res://Assets/audio/player_shot.ogg" id="8_2tjc8"]
+[ext_resource type="AudioStream" uid="uid://clcyo6s4s37wl" path="res://Assets/audio/engine.ogg" id="8_s40x4"]
 
 [sub_resource type="Animation" id="Animation_npw6h"]
 resource_name = "engine_animation"
@@ -77,6 +79,14 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_pbx68")
 }
+
+[node name="ShootAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_2tjc8")
+volume_db = -25.0
+
+[node name="EngineAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_s40x4")
+volume_db = -25.0
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

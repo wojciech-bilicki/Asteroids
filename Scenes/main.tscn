@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfksac6m3avtj"]
+[gd_scene load_steps=8 format=3 uid="uid://cfksac6m3avtj"]
 
 [ext_resource type="PackedScene" uid="uid://dmpkmummnny4l" path="res://Scenes/player/player.tscn" id="1_1l3r8"]
 [ext_resource type="PackedScene" uid="uid://b1jtwgwf8m45f" path="res://Scenes/asteroids_spawner.tscn" id="2_vjew4"]
+[ext_resource type="AudioStream" uid="uid://b0eog0sxl6nyi" path="res://Assets/audio/explosion.ogg" id="3_b1xuv"]
 [ext_resource type="PackedScene" uid="uid://cb0pyfagw6lwm" path="res://Scenes/ufo_spawner.tscn" id="3_vsxj3"]
+[ext_resource type="AudioStream" uid="uid://bsytiod4cqj87" path="res://Assets/audio/ufo_hit.ogg" id="5_nw4kf"]
 [ext_resource type="Script" path="res://Scenes/LivesManager.gd" id="7_nupc8"]
 [ext_resource type="PackedScene" uid="uid://c2vwf0vehxr6k" path="res://Scenes/ui.tscn" id="8_bnbbp"]
 
@@ -12,10 +14,20 @@
 position = Vector2(1194, 580)
 
 [node name="AsteroidsSpawner" parent="." instance=ExtResource("2_vjew4")]
+count = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AsteroidsSpawner"]
+stream = ExtResource("3_b1xuv")
 
 [node name="UfoSpawner" parent="." instance=ExtResource("3_vsxj3")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UfoSpawner"]
+stream = ExtResource("5_nw4kf")
 
 [node name="LifesManager" type="Node" parent="."]
 script = ExtResource("7_nupc8")
 
 [node name="UI" parent="." instance=ExtResource("8_bnbbp")]
+
+[node name="ExplosionAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b1xuv")

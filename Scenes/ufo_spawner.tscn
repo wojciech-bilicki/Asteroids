@@ -34,10 +34,6 @@ position = Vector2(3071, 53)
 rotation = -0.00915306
 rotates = false
 
-[node name="69508" type="Timer" parent="PathTopLeftRight/PathToFollow"]
-wait_time = 0.2
-one_shot = true
-
 [node name="PathBottomRightLeft" type="Path2D" parent="."]
 position = Vector2(2317, 1102)
 curve = SubResource("Curve2D_3opk4")
@@ -46,7 +42,3 @@ curve = SubResource("Curve2D_3opk4")
 position = Vector2(115, -10)
 rotation = -0.00915306
 rotates = false
-
-[node name="69509" type="Timer" parent="PathBottomRightLeft/PathToFollow"]
-wait_time = 0.2
-one_shot = true

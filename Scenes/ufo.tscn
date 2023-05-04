@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ns6bm4d4bbma"]
+[gd_scene load_steps=7 format=3 uid="uid://ns6bm4d4bbma"]
 
 [ext_resource type="Texture2D" uid="uid://bk2du3api3s56" path="res://Assets/ufo.png" id="1_f58mm"]
 [ext_resource type="Script" path="res://Scenes/ufo.gd" id="1_mu6pt"]
 [ext_resource type="PackedScene" uid="uid://dc5fn48r1ocpu" path="res://Scenes/bullet.tscn" id="2_gfmda"]
 [ext_resource type="PackedScene" uid="uid://cejkgj3dg6tvx" path="res://explosion.tscn" id="3_vuwyu"]
+[ext_resource type="AudioStream" uid="uid://cko75r4j07fax" path="res://Assets/audio/ufo_shot.ogg" id="5_oqilu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gdli3"]
 radius = 8.34
@@ -30,6 +31,9 @@ position = Vector2(0, 0)
 autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oqilu")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

@@ -15,7 +15,6 @@ var asteroid_scene: PackedScene
 var size = Utils.AsteroidSize.BIG
 
 @onready var collision_shape = $CollisionShape2D
-@onready var area2D = $Area2D
 @onready var sprite = $Sprite2D as Sprite2D
 
 @onready var explosion_particles = $ExplosionParticles
@@ -49,15 +48,15 @@ func emit_explosion():
 func _on_area_entered(area):
 	if area.owner is Player and (area.owner as Player).is_invincible == false:
 		(area.owner as Player).on_player_died.emit()
-		emit_explosion()
-		queue_free()
 		area.owner.queue_free()
-		var new_asteroid_size = size + 1
-		on_asteroid_destroyed.emit(new_asteroid_size, global_position)
+		on_destroy()
 		
 	if area is Bullet or area is Ufo:
+		area.queue_free()
+		on_destroy()
+
+func on_destroy():
 		emit_explosion()
 		queue_free()
-		area.queue_free()
 		var new_asteroid_size = size + 1
 		on_asteroid_destroyed.emit(new_asteroid_size, global_position)

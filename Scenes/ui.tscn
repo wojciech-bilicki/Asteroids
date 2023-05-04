@@ -14,11 +14,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 64
+
+[node name="LabelContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/LabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_0266e")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 16
 
